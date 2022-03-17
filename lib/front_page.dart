@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:expandable/expandable.dart';
 
 enum statusTitle {
   latest,
@@ -10,7 +9,6 @@ enum statusTitle {
 TextStyle appTextStyle(double fontSize) {
   return TextStyle(
     fontSize: fontSize,
-    fontFamily: "fonts/Lato-Regular.ttf",
   );
 }
 
@@ -32,7 +30,6 @@ Text StatusTitle(statusTitle taskStatus) {
     style: TextStyle(
       color: color,
       fontSize: 12,
-      fontFamily: "fonts/Lato-Regular.ttf",
     ),
   );
 }
@@ -41,18 +38,26 @@ void main() {
   runApp(TasksListPage());
 }
 
-class TasksListPage extends StatelessWidget {
+class TasksListPage extends StatefulWidget {
+  @override
+  State<TasksListPage> createState() => _TasksListPageState();
+}
+
+class _TasksListPageState extends State<TasksListPage> {
   List<Widget> tasks = [
     TaskCard(
         taskTopic: "Поменять лампочку",
         taskDescription:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         taskDeadline: "8ч."),
   ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: "fonts/Lato-Regular.ttf",
+      ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
@@ -74,21 +79,19 @@ class TasksListPage extends StatelessWidget {
                 width: 350,
                 height: 30,
                 margin: const EdgeInsets.fromLTRB(22, 0, 22, 30),
-                child: const Expanded(
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon: Padding(
-                        padding: EdgeInsets.only(left: 320),
-                        child: Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        ),
+                child: const TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.only(left: 320),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.black,
                       ),
-                      border: OutlineInputBorder(),
                     ),
+                    border: OutlineInputBorder(),
                   ),
-                )), //SearchBar
+                )), // SearchBar
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
               height: 40,
@@ -120,10 +123,10 @@ class TasksListPage extends StatelessWidget {
                   ),
                 ],
               ),
-            ), //SortBy
+            ), // SortBy
             Column(
               children: tasks,
-            ),
+            ), // Tasks
             Container(
               width: 110,
               height: 30,
@@ -148,7 +151,7 @@ class TasksListPage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+            ), // Add new task button
           ],
         ),
       ),
@@ -190,7 +193,7 @@ class SortByCard extends StatelessWidget {
   }
 }
 
-class TaskCard extends StatelessWidget {
+class TaskCard extends StatefulWidget {
   TaskCard(
       {required this.taskTopic,
       required this.taskDescription,
@@ -199,6 +202,32 @@ class TaskCard extends StatelessWidget {
   final String taskTopic;
   final String taskDescription;
   final String taskDeadline;
+
+  @override
+  State<TaskCard> createState() => _TaskCardState();
+}
+
+
+class _TaskCardState extends State<TaskCard> {
+  late String firstHalf;
+  late String secondHalf;
+  bool needToExpand = false;
+  bool flag = true;
+  bool expand = true;
+  @override
+  void initState(){
+    super.initState();
+    if (widget.taskDescription.length > 150) {
+      needToExpand = true;
+      firstHalf = widget.taskDescription.substring(0, 150) + "...";
+      secondHalf = widget.taskDescription.substring(151, widget.taskDescription.length);
+    }
+    else {
+      needToExpand = false;
+      firstHalf = widget.taskDescription;
+      secondHalf = "";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -220,13 +249,13 @@ class TaskCard extends StatelessWidget {
             textBaseline: TextBaseline.ideographic,
             children: <Widget>[
               Text(
-                "Тема: $taskTopic",
+                "Тема: ${widget.taskTopic}",
                 style: appTextStyle(14),
               ),
               Container(
                 margin: const EdgeInsets.only(left: 88),
                 child: Text(
-                  "срок: $taskDeadline",
+                  "срок: ${widget.taskDeadline}",
                   style: appTextStyle(14),
                 ),
               ),
@@ -234,9 +263,11 @@ class TaskCard extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              taskDescription,
+            child: secondHalf.length==""?Text(
+              widget.taskDescription,
               style: appTextStyle(10),
+            ):Text(
+              flag? firstHalf:widget.taskDescription,
             ),
           ),
           Row(
@@ -250,19 +281,36 @@ class TaskCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 125),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      "Развернуть",
-                      style: appTextStyle(12),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_down_sharp,
-                      size: 30,
-                    ),
-                  ],
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    flag = !flag;
+                    expand = !expand;
+                  });
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(left: 125),
+                  child: needToExpand==true?Row(
+                    children: <Widget>[
+                      expand==true?Text(
+                        "Развернуть",
+                        style: appTextStyle(12),
+                      ):Text(
+                        "Свернуть",
+                        style: appTextStyle(12),
+                      ),
+                      expand==true?const Icon(
+                        Icons.keyboard_arrow_down_sharp,
+                        size: 30,
+                      ):const Icon(
+                        Icons.keyboard_arrow_up_sharp,
+                        size: 30,
+                      ),
+                    ],
+                  ):const SizedBox(
+                    width: 0,
+                    height: 0,
+                  )
                 ),
               ),
             ],
