@@ -307,10 +307,7 @@ class _TaskCardState extends State<TaskCard> {
                         size: 30,
                       ),
                     ],
-                  ):const SizedBox(
-                    width: 0,
-                    height: 0,
-                  )
+                  ):null,
                 ),
               ),
             ],
