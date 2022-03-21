@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:univercity_app/new_post_page.dart';
 
 enum statusTitle {
   latest,
@@ -34,16 +35,13 @@ Text StatusTitle(statusTitle taskStatus) {
   );
 }
 
-void main() {
-  runApp(TasksListPage());
-}
-
-class TasksListPage extends StatefulWidget {
+class FrontPage extends StatefulWidget {
   @override
-  State<TasksListPage> createState() => _TasksListPageState();
+  State<FrontPage> createState() => _FrontPageState();
 }
 
-class _TasksListPageState extends State<TasksListPage> {
+class _FrontPageState extends State<FrontPage> {
+
   List<Widget> tasks = [
     TaskCard(
         taskTopic: "Поменять лампочку",
@@ -54,106 +52,112 @@ class _TasksListPageState extends State<TasksListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: "fonts/Lato-Regular.ttf",
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Container(
-              width: 150,
-              height: 26,
-              margin: const EdgeInsets.fromLTRB(0, 60, 185, 40),
-              child: const Text(
-                "Список задач",
-                style: TextStyle(
-                  fontFamily: "fonts/Lato-Regular.ttf",
-                  fontWeight: FontWeight.w500,
-                  fontSize: 22,
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Container(
+            width: 150,
+            height: 26,
+            margin: const EdgeInsets.fromLTRB(0, 60, 185, 40),
+            child: const Text(
+              "Список задач",
+              style: TextStyle(
+                fontFamily: "fonts/Lato-Regular.ttf",
+                fontWeight: FontWeight.w500,
+                fontSize: 22,
+              ),
+            ),
+          ),
+          Container(
+              width: 350,
+              height: 30,
+              margin: const EdgeInsets.fromLTRB(22, 0, 22, 30),
+              child: const TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  prefixIcon: Padding(
+                    padding: EdgeInsets.only(left: 320),
+                    child: Icon(
+                      Icons.search,
+                      color: Colors.black,
+                    ),
+                  ),
+                  border: OutlineInputBorder(),
+                ),
+              )), // SearchBar
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 15),
+            height: 40,
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: SortByCard(
+                    cardTitle: "Все",
+                    cardColor: Colors.black,
+                  ),
+                ),
+                Expanded(
+                  child: SortByCard(
+                    cardTitle: "Новое",
+                    cardColor: Colors.green,
+                  ),
+                ),
+                Expanded(
+                  child: SortByCard(
+                    cardTitle: "В процессе",
+                    cardColor: Colors.blue,
+                  ),
+                ),
+                Expanded(
+                  child: SortByCard(
+                    cardTitle: "Сделано",
+                    cardColor: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ), // SortBy
+          Column(
+            children: tasks,
+          ), // Tasks
+          Container(
+            width: 110,
+            height: 30,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey,
+              ),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => NewPostPage()));
+              },
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 7,
+                      child: Text(
+                        "Добавить",
+                        style: appTextStyle(14),
+                      ),
+                    ),
+                    const Expanded(
+                      child: Icon(
+                        Icons.add_box_outlined,
+                        size: 20,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            Container(
-                width: 350,
-                height: 30,
-                margin: const EdgeInsets.fromLTRB(22, 0, 22, 30),
-                child: const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.only(left: 320),
-                      child: Icon(
-                        Icons.search,
-                        color: Colors.black,
-                      ),
-                    ),
-                    border: OutlineInputBorder(),
-                  ),
-                )), // SearchBar
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              height: 40,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: SortByCard(
-                      cardTitle: "Все",
-                      cardColor: Colors.black,
-                    ),
-                  ),
-                  Expanded(
-                    child: SortByCard(
-                      cardTitle: "Новое",
-                      cardColor: Colors.green,
-                    ),
-                  ),
-                  Expanded(
-                    child: SortByCard(
-                      cardTitle: "В процессе",
-                      cardColor: Colors.blue,
-                    ),
-                  ),
-                  Expanded(
-                    child: SortByCard(
-                      cardTitle: "Сделано",
-                      cardColor: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-            ), // SortBy
-            Column(
-              children: tasks,
-            ), // Tasks
-            Container(
-              width: 110,
-              height: 30,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                ),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "Добавить",
-                    style: appTextStyle(14),
-                  ),
-                  const Icon(
-                    Icons.add_box_outlined,
-                    size: 20,
-                  ),
-                ],
-              ),
-            ), // Add new task button
-          ],
-        ),
+          ), // Add new task button
+        ],
       ),
     );
   }
