@@ -47,7 +47,7 @@ class _FrontPageState extends State<FrontPage> {
         taskTopic: "Поменять лампочку",
         taskDescription:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        taskDeadline: "8ч."),
+        dateCreated: "3/22/2022"),
   ];
 
   @override
@@ -201,11 +201,12 @@ class TaskCard extends StatefulWidget {
   TaskCard(
       {required this.taskTopic,
       required this.taskDescription,
-      required this.taskDeadline});
+      required this.dateCreated});
 
   final String taskTopic;
   final String taskDescription;
-  final String taskDeadline;
+  final String dateCreated;
+  String taskState = "Новое";
 
   @override
   State<TaskCard> createState() => _TaskCardState();
@@ -257,9 +258,9 @@ class _TaskCardState extends State<TaskCard> {
                 style: appTextStyle(14),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 88),
+                margin: const EdgeInsets.only(left: 70),
                 child: Text(
-                  "срок: ${widget.taskDeadline}",
+                  "3/22/2022",
                   style: appTextStyle(14),
                 ),
               ),
@@ -276,14 +277,50 @@ class _TaskCardState extends State<TaskCard> {
           ),
           Row(
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  StatusTitle(statusTitle.inProgress),
-                  const Icon(
-                    Icons.keyboard_arrow_down_sharp,
-                    size: 30,
-                  ),
-                ],
+              Container(
+                width: 100,
+                alignment: Alignment.bottomLeft,
+                height: 50,
+                child: DropdownButton<String>(
+                  value: widget.taskState,
+                  items: const [
+                    DropdownMenuItem(
+                      child: Text(
+                        "Новое",
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 12,
+                        ),
+                      ),
+                      value: "Новое",
+                    ),
+                    DropdownMenuItem(
+                      child: Text(
+                        "В прогрессе",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 12,
+                        ),
+                      ),
+                      value: "В прогрессе",
+                    ),
+                    DropdownMenuItem(
+                      child: Text(
+                        "Сделано",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                        ),
+                      ),
+                      value: "Сделано",
+                    ),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      widget.taskState = value!;
+                    });
+                  },
+                ),
               ),
               InkWell(
                 onTap: () {
