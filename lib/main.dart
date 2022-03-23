@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/front_page.dart';
+import 'app_widgets/section_card.dart';
 
 void main() {
   runApp(UniversityAppUI());
@@ -29,21 +29,29 @@ class UniversityAppUI extends StatelessWidget {
                   child: Text(
                     "Категория",
                     style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 24,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 125, top: 52),
+                  margin: EdgeInsets.only(left: 140, top: 52),
                   child: Image.asset(
                     "icons/info.png",
-                    width: 20,
-                    height: 20,
+                    width: 25,
+                    height: 25,
                   ),
                 ),
               ],
             ),
+            SizedBox(
+              height: 20,
+            ),
+            SectionCard(sectionName: "Кухня", sectionIconPath: "icons/kitchen.png"),
+            SectionCard(sectionName: "Уборка", sectionIconPath: "icons/cleaning.png"),
+            SectionCard(sectionName: "Сад", sectionIconPath: "icons/gardening-tools.png"),
+            SectionCard(sectionName: "Электричество", sectionIconPath: "icons/lamp.png"),
+            SectionCard(sectionName: "Ремонт", sectionIconPath: "icons/settings.png"),
           ],
         ),
       ),

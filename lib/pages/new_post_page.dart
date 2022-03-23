@@ -42,8 +42,7 @@ class _NewPostPageState extends State<NewPostPage> {
               height: 30,
               child: const TextField(
                 decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
+                  filled: false,
                   hintText: "тема",
                   hintStyle: TextStyle(
                     fontSize: 15,
@@ -67,8 +66,7 @@ class _NewPostPageState extends State<NewPostPage> {
                   hintStyle: TextStyle(
                     fontSize: 15,
                   ),
-                  filled: true,
-                  fillColor: Colors.white,
+                  filled: false,
                 ),
               ),
             ),
@@ -90,7 +88,7 @@ class _NewPostPageState extends State<NewPostPage> {
             ),
           ),
           SizedBox(
-            height: 100,
+            height: 80,
           ),
           Row(
             children: [
@@ -145,16 +143,19 @@ class _NewPostPageState extends State<NewPostPage> {
               ),
               Container(
                 width: 110,
-                height: 30,
+                height: 35,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Colors.grey,
+                    color: Colors.white,
                   ),
                   borderRadius: const BorderRadius.all(
                     Radius.circular(10),
                   ),
                 ),
-                child: ElevatedButton(
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    primary: Colors.black,
+                  ),
                   onPressed: () {
                     print("post has been added");
                   },
@@ -162,17 +163,15 @@ class _NewPostPageState extends State<NewPostPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Expanded(
-                          flex: 7,
-                          child: Text(
-                            "Добавить",
-                            style: appTextStyle(14),
-                          ),
+                        Text(
+                          "Добавить",
+                          style: appTextStyle(12),
                         ),
-                        const Expanded(
-                          child: Icon(
-                            Icons.add_box_outlined,
-                            size: 20,
+                        Container(
+                          margin: EdgeInsets.only(left: 10),
+                          child: Image.asset(
+                            "icons/add.png",
+                            width: 15,
                           ),
                         ),
                       ],

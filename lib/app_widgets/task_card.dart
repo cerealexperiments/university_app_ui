@@ -59,22 +59,15 @@ class _TaskCardState extends State<TaskCard> {
       ),
       child: Column(
         children: <Widget>[
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.baseline,
-            textBaseline: TextBaseline.ideographic,
-            children: <Widget>[
-              Text(
-                "Тема: ${widget.taskTopic}",
-                style: appTextStyle(14),
+          Container(
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              "Тема: ${widget.taskTopic}",
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 70),
-                child: Text(
-                  "3/22/2022",
-                  style: appTextStyle(14),
-                ),
-              ),
-            ],
+            ),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
@@ -83,6 +76,17 @@ class _TaskCardState extends State<TaskCard> {
               style: appTextStyle(10),
             ):Text(
               flag? firstHalf:widget.taskDescription,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 5),
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              "Добавлено: ${widget.dateCreated}",
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.grey[600],
+              ),
             ),
           ),
           Row(
