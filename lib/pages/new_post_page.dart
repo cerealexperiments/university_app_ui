@@ -25,7 +25,7 @@ class _NewPostPageState extends State<NewPostPage> {
             margin: const EdgeInsets.fromLTRB(30, 60, 0, 40),
             width: 400,
             height: 30,
-            child: Text(
+            child: const Text(
               "Добавить задачу",
               style: TextStyle(
                 fontFamily: "fonts/Lato-Regular.ttf",

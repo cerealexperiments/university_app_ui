@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:univercity_app/new_post_page.dart';
+import 'package:univercity_app/pages/new_post_page.dart';
+import 'package:univercity_app/app_widgets/sort_by_card.dart';
 
 enum statusTitle {
   latest,
@@ -163,39 +164,6 @@ class _FrontPageState extends State<FrontPage> {
   }
 }
 
-class SortByCard extends StatelessWidget {
-  SortByCard({required this.cardTitle, required this.cardColor});
-
-  final Color cardColor;
-  final String cardTitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 310,
-      height: 120,
-      margin: const EdgeInsets.all(5),
-      padding: const EdgeInsets.all(5),
-      child: Center(
-        child: Text(
-          cardTitle,
-          style: TextStyle(
-            color: cardColor,
-            fontSize: 12,
-          ),
-        ),
-      ),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.grey,
-        ),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(10),
-        ),
-      ),
-    );
-  }
-}
 
 class TaskCard extends StatefulWidget {
   TaskCard(
