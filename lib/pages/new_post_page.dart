@@ -2,9 +2,6 @@ import "package:flutter/material.dart";
 
 import 'front_page.dart';
 
-void main() {
-  runApp(NewPostPage());
-}
 
 class NewPostPage extends StatefulWidget {
   String taskDeadline = "5ч.";
