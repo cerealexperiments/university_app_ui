@@ -58,18 +58,35 @@ class _FrontPageState extends State<FrontPage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Container(
-            width: 150,
-            height: 26,
-            margin: const EdgeInsets.fromLTRB(0, 60, 185, 40),
-            child: const Text(
-              "Список задач",
-              style: TextStyle(
-                fontFamily: "fonts/Lato-Regular.ttf",
-                fontWeight: FontWeight.w500,
-                fontSize: 22,
+          Row(
+            children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 15, left: 20),
+                  child: Image.asset(
+                    "icons/arrow-left.png",
+                    width: 22,
+                    height: 22,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(20, 60, 0, 40),
+                width: 200,
+                height: 30,
+                child: const Text(
+                  "Список задач",
+                  style: TextStyle(
+                    fontFamily: "fonts/Lato-Regular.ttf",
+                    fontWeight: FontWeight.w500,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+            ],
           ),
           Container(
               width: 350,
@@ -142,23 +159,23 @@ class _FrontPageState extends State<FrontPage> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => NewPostPage()));
               },
               child: Container(
-            child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "Добавить",
-                  style: appTextStyle(12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "Добавить",
+                      style: appTextStyle(12),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: Image.asset(
+                        "icons/add.png",
+                        width: 15,
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  child: Image.asset(
-                    "icons/add.png",
-                    width: 15,
-                  ),
-                ),
-              ],
-            ),
-          ),
+              ),
             ),
           ), // Add new task button
         ],
@@ -166,6 +183,3 @@ class _FrontPageState extends State<FrontPage> {
     );
   }
 }
-
-
-

@@ -1,11 +1,10 @@
 import "package:flutter/material.dart";
 
-import 'front_page.dart';
+import '../app_widgets/task_card.dart';
 
 
 class NewPostPage extends StatefulWidget {
   String taskDeadline = "5ч.";
-  String dateCreated = "3/22/2022";
   String taskState = "Новое";
 
   @override
@@ -18,18 +17,35 @@ class _NewPostPageState extends State<NewPostPage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 60, 0, 40),
-            width: 400,
-            height: 30,
-            child: const Text(
-              "Добавить задачу",
-              style: TextStyle(
-                fontFamily: "fonts/Lato-Regular.ttf",
-                fontWeight: FontWeight.w500,
-                fontSize: 24,
+          Row(
+            children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 15, left: 20),
+                  child: Image.asset(
+                    "icons/arrow-left.png",
+                    width: 22,
+                    height: 22,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(20, 60, 0, 40),
+                width: 200,
+                height: 30,
+                child: const Text(
+                  "Добавить задачу",
+                  style: TextStyle(
+                    fontFamily: "fonts/Lato-Regular.ttf",
+                    fontWeight: FontWeight.w500,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+            ],
           ),
           Align(
             alignment: Alignment.bottomLeft,
@@ -70,19 +86,6 @@ class _NewPostPageState extends State<NewPostPage> {
           ),
           SizedBox(
             height: 50,
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 40),
-            child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                "создано: ${widget.dateCreated}",
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                ),
-              ),
-            ),
           ),
           SizedBox(
             height: 80,

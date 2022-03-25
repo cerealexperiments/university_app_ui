@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../pages/front_page.dart';
-
 class SectionCard extends StatefulWidget {
 
-  SectionCard({required this.sectionName, required this.sectionIconPath});
+  SectionCard({required this.sectionName, required this.sectionIconPath, required this.sectionPagePath});
 
   late final String sectionName;
   late final String sectionIconPath;
+  late final sectionPagePath;
 
   @override
   State<SectionCard> createState() => _SectionCardState();
@@ -18,7 +17,7 @@ class _SectionCardState extends State<SectionCard> {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => FrontPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => widget.sectionPagePath));
       },
       style: TextButton.styleFrom(
         primary: Colors.black,
