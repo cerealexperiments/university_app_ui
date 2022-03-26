@@ -49,11 +49,25 @@ class _TaskCardState extends State<TaskCard> {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.grey,
-        ),
-        borderRadius: const BorderRadius.all(
+      decoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            offset: Offset(
+              1.0,
+              3.0,
+            ),
+            blurRadius: 4.0,
+            spreadRadius: 0.2,
+          ), //BoxShadow
+          BoxShadow(
+            color: Colors.white,
+            offset: Offset(0.0, 0.0),
+            blurRadius: 0.0,
+            spreadRadius: 0.0,
+          ), //BoxShadow
+        ],
+        borderRadius: BorderRadius.all(
           Radius.circular(10),
         ),
       ),

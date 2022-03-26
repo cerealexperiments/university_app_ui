@@ -98,23 +98,6 @@ class _KitchenPageState extends State<KitchenPage> {
               ],
             ),
             Container(
-                width: 350,
-                height: 30,
-                margin: const EdgeInsets.fromLTRB(22, 0, 22, 30),
-                child: const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.only(left: 320),
-                      child: Icon(
-                        Icons.search,
-                        color: Colors.black,
-                      ),
-                    ),
-                    border: OutlineInputBorder(),
-                  ),
-                )), // SearchBar
-            Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
               height: 40,
               child: Row(

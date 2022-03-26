@@ -26,11 +26,25 @@ class _SectionCardState extends State<SectionCard> {
         width: 380,
         height: 80,
         padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.white,
-          ),
-          borderRadius: const BorderRadius.all(
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              offset: Offset(
+                1.0,
+                3.0,
+              ),
+              blurRadius: 4.0,
+              spreadRadius: 0.2,
+            ), //BoxShadow
+            BoxShadow(
+              color: Colors.white,
+              offset: Offset(0.0, 0.0),
+              blurRadius: 0.0,
+              spreadRadius: 0.0,
+            ), //BoxShadow
+          ],
+          borderRadius: BorderRadius.all(
             Radius.circular(10),
           ),
         ),
