@@ -135,11 +135,26 @@ class _RepairPageState extends State<RepairPage> {
             Container(
               width: 110,
               height: 35,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.white,
-                ),
-                borderRadius: const BorderRadius.all(
+              margin: EdgeInsets.only(bottom: 50),
+              decoration: const BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    offset: Offset(
+                      1.0,
+                      3.0,
+                    ),
+                    blurRadius: 4.0,
+                    spreadRadius: 0.2,
+                  ), //BoxShadow
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 0.0,
+                    spreadRadius: 0.0,
+                  ), //BoxShadow
+                ],
+                borderRadius: BorderRadius.all(
                   Radius.circular(10),
                 ),
               ),

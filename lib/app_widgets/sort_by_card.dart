@@ -32,7 +32,7 @@ class SortByCard extends StatelessWidget {
             ),
             blurRadius: 4.0,
             spreadRadius: 0.2,
-          ), //BoxShadow
+          ),
           BoxShadow(
             color: Colors.white,
             offset: Offset(0.0, 0.0),
