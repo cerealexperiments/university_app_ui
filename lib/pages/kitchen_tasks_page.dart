@@ -61,6 +61,7 @@ class _KitchenPageState extends State<KitchenPage> {
           children: <Widget>[
             Row(
               children: [
+/* Убрал кнопку назад, так как она уже не нужна
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -74,8 +75,9 @@ class _KitchenPageState extends State<KitchenPage> {
                     ),
                   ),
                 ),
+*/
                 Container(
-                  margin: const EdgeInsets.fromLTRB(45, 60, 0, 40),
+                  margin: const EdgeInsets.fromLTRB(40, 60, 60, 40), // изменил параметры для ровного расположеия
                   width: 200,
                   height: 30,
                   child: const Text(
@@ -100,29 +102,34 @@ class _KitchenPageState extends State<KitchenPage> {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
               height: 40,
-              child: Row(
+              child: ListView( // Добавил ListView для скролля кнопок для фильтра.
+                scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  Expanded(
+                  Container(
+                    width: 100,
                     child: SortByCard(
                       cardTitle: "Все",
                       cardColor: Colors.black,
                     ),
                   ),
-                  Expanded(
+                  Container(
+                    width: 100,
                     child: SortByCard(
                       cardTitle: "Новое",
                       cardColor: Colors.green,
                     ),
                   ),
-                  Expanded(
+                  Container(
+                    width: 100,
                     child: SortByCard(
                       cardTitle: "В процессе",
                       cardColor: Colors.blue,
                     ),
                   ),
-                  Expanded(
+                  Container(
+                    width: 100,
                     child: SortByCard(
-                      cardTitle: "Сделано",
+                      cardTitle: "Готово",
                       cardColor: Colors.grey,
                     ),
                   ),
