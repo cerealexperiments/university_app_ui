@@ -89,6 +89,7 @@ class _KitchenPageState extends State<KitchenPage> {
                     ),
                   ),
                 ),
+                /*
                 Container(
                   margin: EdgeInsets.only(top: 15),
                   child: Image.asset(
@@ -97,6 +98,7 @@ class _KitchenPageState extends State<KitchenPage> {
                     height: 55,
                   ),
                 ),
+                */
               ],
             ),
             Container(
