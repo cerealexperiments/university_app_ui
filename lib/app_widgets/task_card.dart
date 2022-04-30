@@ -32,10 +32,10 @@ class _TaskCardState extends State<TaskCard> {
   @override
   void initState(){
     super.initState();
-    if (widget.taskDescription.length > 150) {
+    if (widget.taskDescription.length > 85) {
       needToExpand = true;
-      firstHalf = widget.taskDescription.substring(0, 150) + "...";
-      secondHalf = widget.taskDescription.substring(151, widget.taskDescription.length);
+      firstHalf = widget.taskDescription.substring(0, 85) + "...";
+      secondHalf = widget.taskDescription.substring(86, widget.taskDescription.length);
     }
     else {
       needToExpand = false;
@@ -73,34 +73,40 @@ class _TaskCardState extends State<TaskCard> {
       ),
       child: Column(
         children: <Widget>[
-          Container(
-            alignment: Alignment.bottomLeft,
-            child: Text(
-              "Тема: ${widget.taskTopic}",
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              Container(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  "Тема: ${widget.taskTopic}",
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
-            ),
+              Container(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  widget.dateCreated,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ),
+            ],
           ),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
+            margin: const EdgeInsets.only(top: 10, bottom: 5),
             child: secondHalf.length==""?Text(
               widget.taskDescription,
               style: appTextStyle(10),
             ):Text(
               flag? firstHalf:widget.taskDescription,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 5),
-            alignment: Alignment.bottomLeft,
-            child: Text(
-              "Добавлено: ${widget.dateCreated}",
-              style: TextStyle(
-                fontSize: 13,
-                color: Colors.grey[600],
-              ),
             ),
           ),
           Row(

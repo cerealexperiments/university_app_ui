@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:univercity_app/pages/kitchen_tasks_page.dart';
-import 'package:univercity_app/pages/section_page.dart';
-import 'app_widgets/section_card.dart';
+import 'package:univercity_app/pages/tasks_page.dart';
 
 void main() {
   runApp(UniversityAppUI());
@@ -17,7 +15,7 @@ class UniversityAppUI extends StatelessWidget {
         fontFamily: "fonts/Lato-Regular.ttf",
       ),
       debugShowCheckedModeBanner: false,
-      home: KitchenPage(), // произвел изменения, далее переход из main --> в KitchenPage
+      home: TasksPage(), // произвел изменения, далее переход из main --> в KitchenPage
     );
   }
 }
