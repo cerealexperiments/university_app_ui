@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "268499010102",
+    "project_id": "task-management-5cbbe",
+    "storage_bucket": "task-management-5cbbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268499010102:android:c53d94ccba2f2b0c840e97",
+        "android_client_info": {
+          "package_name": "com.example.univercity_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268499010102-shs6cto3kl23sqlp0u7ajfnfimggm04t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUvpt7GZUz5TzWrTKK2EehWq5xUOJ8a6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268499010102-shs6cto3kl23sqlp0u7ajfnfimggm04t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
