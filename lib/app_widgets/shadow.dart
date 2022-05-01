@@ -1,31 +1,17 @@
 import 'package:flutter/material.dart';
 
-class SortByCard extends StatelessWidget {
-  SortByCard({required this.cardTitle, required this.cardColor, required this.onChange});
-
-  final VoidCallback onChange;
-  final Color cardColor;
-  final String cardTitle;
+class Shadow extends StatelessWidget {
 
 
+  final Widget button;
 
+  Shadow({ required this.button});
+///Принимает button: (child:)///
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 310,
-      height: 120,
-      margin: const EdgeInsets.all(5),
-      padding: const EdgeInsets.all(5),
-      child: Center(
-        child: Text(
-          cardTitle,
-          style: TextStyle(
-            color: cardColor,
-            fontSize: 12,
-          ),
-        ),
-      ),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -36,7 +22,7 @@ class SortByCard extends StatelessWidget {
             ),
             blurRadius: 4.0,
             spreadRadius: 0.2,
-          ),
+          ), //BoxShadow
           BoxShadow(
             color: Colors.white,
             offset: Offset(0.0, 0.0),
@@ -45,9 +31,10 @@ class SortByCard extends StatelessWidget {
           ), //BoxShadow
         ],
         borderRadius: BorderRadius.all(
-          Radius.circular(10),
+          Radius.circular(15),
         ),
       ),
+      child: button,
     );
   }
 }
