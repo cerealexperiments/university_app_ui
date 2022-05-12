@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:univercity_app/pages/new_post_page.dart';
 import 'package:univercity_app/app_widgets/sort_by_card.dart';
 
+import '../app_widgets/search_bar.dart';
 import '../app_widgets/task_card.dart';
 
 enum statusTitle {
@@ -77,7 +78,7 @@ class _TasksPageState extends State<TasksPage> {
                 ),
 */
                 Container(
-                  margin: const EdgeInsets.fromLTRB(40, 60, 60, 40), // изменил параметры для ровного расположеия
+                  margin: const EdgeInsets.fromLTRB(40, 60, 60, 20), // изменил параметры для ровного расположеия
                   width: 200,
                   height: 30,
                   child: const Text(
@@ -101,6 +102,8 @@ class _TasksPageState extends State<TasksPage> {
                 */
               ],
             ),
+            SearchBar(),
+
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 15),
               height: 40,
@@ -112,6 +115,7 @@ class _TasksPageState extends State<TasksPage> {
                     child: SortByCard(
                       cardTitle: "Все",
                       cardColor: Colors.black,
+                      onChange: (){},
                     ),
                   ),
                   Container(
@@ -119,6 +123,7 @@ class _TasksPageState extends State<TasksPage> {
                     child: SortByCard(
                       cardTitle: "Новое",
                       cardColor: Colors.green,
+                        onChange: (){}
                     ),
                   ),
                   Container(
@@ -126,6 +131,7 @@ class _TasksPageState extends State<TasksPage> {
                     child: SortByCard(
                       cardTitle: "В процессе",
                       cardColor: Colors.blue,
+                        onChange: (){}
                     ),
                   ),
                   Container(
@@ -133,6 +139,7 @@ class _TasksPageState extends State<TasksPage> {
                     child: SortByCard(
                       cardTitle: "Готово",
                       cardColor: Colors.grey,
+                        onChange: (){}
                     ),
                   ),
                 ],

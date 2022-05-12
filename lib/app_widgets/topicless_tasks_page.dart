@@ -45,13 +45,13 @@ class FrontPage extends StatefulWidget {
 
 class _FrontPageState extends State<FrontPage> {
 
-  List<Widget> tasks = [
+ /* List<Widget> tasks = [
     TaskCard(
         taskTopic: "Поменять лампочку",
         taskDescription:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         dateCreated: "3/23/2022"),
-  ];
+  ];*/
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +105,7 @@ class _FrontPageState extends State<FrontPage> {
                   border: OutlineInputBorder(),
                 ),
               )), // SearchBar
-          Container(
+/*          Container(
             margin: const EdgeInsets.symmetric(horizontal: 15),
             height: 40,
             child: Row(
@@ -136,10 +136,10 @@ class _FrontPageState extends State<FrontPage> {
                 ),
               ],
             ),
-          ), // SortBy
-          Column(
+          ),*/ // SortBy
+          /*Column(
             children: tasks,
-          ), // Tasks
+          ),*/ // Tasks
           Container(
             width: 110,
             height: 35,
